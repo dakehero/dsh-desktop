@@ -10,6 +10,7 @@ import type { NextUpdateState } from './update-state.ts'
 export interface NextUpdateOptions {
   version: string
   platform: string
+  arch?: 'x64' | 'arm64'
   packaged: boolean
   userData: string
   /** Fetch adapter for the version check. */
@@ -92,7 +93,7 @@ export class NextUpdates {
       try { installationId = await getOrCreateDesktopInstallationId(this.options.userData) } catch (error) { this.options.log(error) }
     }
     return checkForDesktopUpdate({ currentVersion: this.options.version, channel: 'beta', installationId,
-      request: this.options.request, signal: AbortSignal.any([signal, AbortSignal.timeout(20_000)]) })
+      arch: this.options.arch ?? (process.arch === 'arm64' ? 'arm64' : 'x64'), request: this.options.request, signal: AbortSignal.any([signal, AbortSignal.timeout(20_000)]) })
   }
   check(background = false): Promise<void> {
     if (this.state.phase === 'ready' || this.state.phase === 'installing') return Promise.resolve()
@@ -129,13 +130,14 @@ export class NextUpdates {
         if (result.status !== 'update-available') { this.set({ phase: 'current', version: result.latestVersion }); return }
         if (result.latestVersion !== this.notifiedVersion) this.recordNotifiedVersion(result.latestVersion)
         const platform = this.options.platform as 'darwin' | 'win32'
+        const arch = this.options.arch ?? (process.arch === 'arm64' ? 'arm64' : 'x64')
         const cache = join(this.options.userData, 'next-updates'); privateDirectory(cache)
         if (this.directory) await rm(this.directory, { recursive: true, force: true })
         const directory = this.directory = await mkdtemp(join(cache, 'download-'))
         this.set({ phase: 'downloading', version: result.latestVersion, received: 0, total: undefined })
         let lastProgress = 0
-        const path = await downloadDesktopUpdate({ platform, version: result.latestVersion, channel: 'beta',
-          destinationPath: join(directory, desktopUpdateFilename(platform, result.latestVersion, 'beta')),
+        const path = await downloadDesktopUpdate({ platform, arch, version: result.latestVersion, channel: 'beta',
+          destinationPath: join(directory, desktopUpdateFilename(platform, result.latestVersion, 'beta', arch)),
           request: this.options.artifactRequest, expectedSha256: result.installerSha256?.[platform],
           signal: AbortSignal.any([signal, AbortSignal.timeout(60 * 60_000)]), onProgress: (received, total) => {
             if (Date.now() - lastProgress < 250 && received !== total) return

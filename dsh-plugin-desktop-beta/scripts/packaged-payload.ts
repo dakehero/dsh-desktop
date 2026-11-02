@@ -15,14 +15,14 @@ export const PAYLOAD_DIR = '.desktop-build/payload'
 /**
  * Architectures whose native dependencies one Next package carries.
  * macOS releases are universal and the Yarn tree installs both Darwin CPU variants, so even a
- * single-architecture directory build ships both; Windows releases are x64 only.
+ * single-architecture directory build ships both; Windows releases carry the native host CPU.
  * @param platform - Electron platform being packaged.
  * @param hostArch - Build host architecture, used for platforms without a release target.
  * @returns Platform and architectures recorded in the payload descriptor.
  */
 export function nextPackagingTarget(platform: NodeJS.Platform, hostArch: string = process.arch): NextPackagingTarget {
   if (platform === 'darwin') return { platform, archs: ['arm64', 'x64'] }
-  if (platform === 'win32') return { platform, archs: ['x64'] }
+  if (platform === 'win32' && hostArch !== 'x64' && hostArch !== 'arm64') throw new Error(`Unsupported Windows payload architecture: ${hostArch}`)
   return { platform, archs: [hostArch] }
 }
 
