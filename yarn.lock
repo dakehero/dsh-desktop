@@ -7067,6 +7067,54 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@deepseek-ai/dsh-experimental-speech-to-text-sensevoice@patch:@deepseek-ai/dsh-experimental-speech-to-text-sensevoice@file%3Avendor/dsh-runtime/0.2.1-rc.3/deepseek-ai-dsh-experimental-speech-to-text-sensevoice-0.2.1-rc.3.tgz#./patches/sensevoice-win-arm64.patch::locator=deepseek-harness-desktop%40workspace%3A.":
+  version: 0.2.1-rc.3
+  resolution: "@deepseek-ai/dsh-experimental-speech-to-text-sensevoice@patch:@deepseek-ai/dsh-experimental-speech-to-text-sensevoice@file%3Avendor/dsh-runtime/0.2.1-rc.3/deepseek-ai-dsh-experimental-speech-to-text-sensevoice-0.2.1-rc.3.tgz%23vendor/dsh-runtime/0.2.1-rc.3/deepseek-ai-dsh-experimental-speech-to-text-sensevoice-0.2.1-rc.3.tgz%3A%3Ahash=30b4ea&locator=deepseek-harness-desktop%2540workspace%253A.#./patches/sensevoice-win-arm64.patch::version=0.2.1-rc.3&hash=a5f503&locator=deepseek-harness-desktop%40workspace%3A."
+  dependencies:
+    "@deepseek-ai/dsh-timeout": "npm:0.2.1-rc.3"
+    "@deepseek-ai/schemastery": "npm:~3.18.5"
+    sherpa-onnx-node: "npm:1.13.8"
+    zod: "npm:4.4.3"
+  peerDependencies:
+    "@deepseek-ai/cordis": ~4.0.5
+    "@deepseek-ai/dsh-experimental-speech-to-text": 0.2.1-rc.3
+    "@deepseek-ai/dsh-subprocess": 0.2.1-rc.3
+  checksum: 10c0/8cd85d09aa76c5578b879beb9ed7bf4bd2c13de9ac84a146a92882ae519179c4bf0968227cdede4a1bdc6f15482b43b3ba4a21f9c3db903456f371ee7441aff9
+  languageName: node
+  linkType: hard
+
+"@deepseek-ai/dsh-experimental-speech-to-text-sensevoice@patch:@deepseek-ai/dsh-experimental-speech-to-text-sensevoice@file%3Avendor/dsh-runtime/0.2.1-rc.5/deepseek-ai-dsh-experimental-speech-to-text-sensevoice-0.2.1-rc.5.tgz#./patches/sensevoice-win-arm64.patch::locator=deepseek-harness-desktop%40workspace%3A.":
+  version: 0.2.1-rc.5
+  resolution: "@deepseek-ai/dsh-experimental-speech-to-text-sensevoice@patch:@deepseek-ai/dsh-experimental-speech-to-text-sensevoice@file%3Avendor/dsh-runtime/0.2.1-rc.5/deepseek-ai-dsh-experimental-speech-to-text-sensevoice-0.2.1-rc.5.tgz%23vendor/dsh-runtime/0.2.1-rc.5/deepseek-ai-dsh-experimental-speech-to-text-sensevoice-0.2.1-rc.5.tgz%3A%3Ahash=a96ac3&locator=deepseek-harness-desktop%2540workspace%253A.#./patches/sensevoice-win-arm64.patch::version=0.2.1-rc.5&hash=a5f503&locator=deepseek-harness-desktop%40workspace%3A."
+  dependencies:
+    "@deepseek-ai/dsh-timeout": "npm:0.2.1-rc.5"
+    "@deepseek-ai/schemastery": "npm:~3.18.5"
+    sherpa-onnx-node: "npm:1.13.8"
+    zod: "npm:4.4.3"
+  peerDependencies:
+    "@deepseek-ai/cordis": ~4.0.5
+    "@deepseek-ai/dsh-experimental-speech-to-text": 0.2.1-rc.5
+    "@deepseek-ai/dsh-subprocess": 0.2.1-rc.5
+  checksum: 10c0/e3e7a255d2b9e70f721f5643eb016068a4dac286a753c35e2192dab0587d1adf13162dcb4365c44d74942f11bb65499b080f727b917fae9ed64313c1ff6a6fe0
+  languageName: node
+  linkType: hard
+
+"@deepseek-ai/dsh-experimental-speech-to-text-sensevoice@patch:@deepseek-ai/dsh-experimental-speech-to-text-sensevoice@file%3Avendor/dsh-runtime/0.2.2-alpha.2/deepseek-ai-dsh-experimental-speech-to-text-sensevoice-0.2.2-alpha.2.tgz#./patches/sensevoice-win-arm64.patch::locator=deepseek-harness-desktop%40workspace%3A.":
+  version: 0.2.2-alpha.2
+  resolution: "@deepseek-ai/dsh-experimental-speech-to-text-sensevoice@patch:@deepseek-ai/dsh-experimental-speech-to-text-sensevoice@file%3Avendor/dsh-runtime/0.2.2-alpha.2/deepseek-ai-dsh-experimental-speech-to-text-sensevoice-0.2.2-alpha.2.tgz%23vendor/dsh-runtime/0.2.2-alpha.2/deepseek-ai-dsh-experimental-speech-to-text-sensevoice-0.2.2-alpha.2.tgz%3A%3Ahash=8ce82f&locator=deepseek-harness-desktop%2540workspace%253A.#./patches/sensevoice-win-arm64.patch::version=0.2.2-alpha.2&hash=a5f503&locator=deepseek-harness-desktop%40workspace%3A."
+  dependencies:
+    "@deepseek-ai/dsh-timeout": "npm:0.2.2-alpha.2"
+    "@deepseek-ai/schemastery": "npm:~3.18.6-alpha.1"
+    sherpa-onnx-node: "npm:1.13.8"
+    zod: "npm:4.4.3"
+  peerDependencies:
+    "@deepseek-ai/cordis": ~4.0.6-alpha.1
+    "@deepseek-ai/dsh-experimental-speech-to-text": 0.2.2-alpha.2
+    "@deepseek-ai/dsh-subprocess": 0.2.2-alpha.2
+  checksum: 10c0/5e184f7761f5a0b262c610605f6e171f1e2533a2dd7e2f13a763c01c9e96b995917fe7b2cef1d382e7432db7a1bf7d13012bbda112f01e388202f9a2eb6ba1a4
+  languageName: node
+  linkType: hard
+
 "@deepseek-ai/dsh-experimental-speech-to-text@file:vendor/dsh-runtime/0.2.1-rc.3/deepseek-ai-dsh-experimental-speech-to-text-0.2.1-rc.3.tgz::locator=deepseek-harness-desktop%40workspace%3A.":
   version: 0.2.1-rc.3
   resolution: "@deepseek-ai/dsh-experimental-speech-to-text@file:vendor/dsh-runtime/0.2.1-rc.3/deepseek-ai-dsh-experimental-speech-to-text-0.2.1-rc.3.tgz#vendor/dsh-runtime/0.2.1-rc.3/deepseek-ai-dsh-experimental-speech-to-text-0.2.1-rc.3.tgz::hash=8b421d&locator=deepseek-harness-desktop%40workspace%3A."
@@ -28075,44 +28123,45 @@ __metadata:
   languageName: node
   linkType: hard
 
-"sherpa-onnx-darwin-arm64@npm:^1.13.8":
-  version: 1.13.8
-  resolution: "sherpa-onnx-darwin-arm64@npm:1.13.8"
+"sherpa-onnx-darwin-arm64@npm:2.0.1":
+  version: 2.0.1
+  resolution: "sherpa-onnx-darwin-arm64@npm:2.0.1"
   conditions: os=darwin & cpu=arm64
   languageName: node
   linkType: hard
 
-"sherpa-onnx-darwin-x64@npm:^1.13.8":
-  version: 1.13.8
-  resolution: "sherpa-onnx-darwin-x64@npm:1.13.8"
+"sherpa-onnx-darwin-x64@npm:2.0.1":
+  version: 2.0.1
+  resolution: "sherpa-onnx-darwin-x64@npm:2.0.1"
   conditions: os=darwin & cpu=x64
   languageName: node
   linkType: hard
 
-"sherpa-onnx-linux-arm64@npm:^1.13.8":
-  version: 1.13.8
-  resolution: "sherpa-onnx-linux-arm64@npm:1.13.8"
+"sherpa-onnx-linux-arm64@npm:2.0.1":
+  version: 2.0.1
+  resolution: "sherpa-onnx-linux-arm64@npm:2.0.1"
   conditions: os=linux & cpu=arm64
   languageName: node
   linkType: hard
 
-"sherpa-onnx-linux-x64@npm:^1.13.8":
-  version: 1.13.8
-  resolution: "sherpa-onnx-linux-x64@npm:1.13.8"
+"sherpa-onnx-linux-x64@npm:2.0.1":
+  version: 2.0.1
+  resolution: "sherpa-onnx-linux-x64@npm:2.0.1"
   conditions: os=linux & cpu=x64
   languageName: node
   linkType: hard
 
-"sherpa-onnx-node@npm:1.13.8":
-  version: 1.13.8
-  resolution: "sherpa-onnx-node@npm:1.13.8"
+"sherpa-onnx-node@npm:2.0.1":
+  version: 2.0.1
+  resolution: "sherpa-onnx-node@npm:2.0.1"
   dependencies:
-    sherpa-onnx-darwin-arm64: "npm:^1.13.8"
-    sherpa-onnx-darwin-x64: "npm:^1.13.8"
-    sherpa-onnx-linux-arm64: "npm:^1.13.8"
-    sherpa-onnx-linux-x64: "npm:^1.13.8"
-    sherpa-onnx-win-ia32: "npm:^1.13.8"
-    sherpa-onnx-win-x64: "npm:^1.13.8"
+    sherpa-onnx-darwin-arm64: "npm:2.0.1"
+    sherpa-onnx-darwin-x64: "npm:2.0.1"
+    sherpa-onnx-linux-arm64: "npm:2.0.1"
+    sherpa-onnx-linux-x64: "npm:2.0.1"
+    sherpa-onnx-win-arm64: "npm:2.0.1"
+    sherpa-onnx-win-ia32: "npm:2.0.1"
+    sherpa-onnx-win-x64: "npm:2.0.1"
   dependenciesMeta:
     sherpa-onnx-darwin-arm64:
       optional: true
@@ -28122,24 +28171,33 @@ __metadata:
       optional: true
     sherpa-onnx-linux-x64:
       optional: true
+    sherpa-onnx-win-arm64:
+      optional: true
     sherpa-onnx-win-ia32:
       optional: true
     sherpa-onnx-win-x64:
       optional: true
-  checksum: 10c0/c7134086d5b453197bea25645c2841cc14f1acdfe9dd1d343f44e0097536577ff679ed1ae1b0833fc4ee44e260d3b13e0c31005dae6311e4d8ec6e1488396a75
+  checksum: 10c0/5a50280cb23767323efa18b807e52a653ab21c6f7f3a1caa34f272037cdf9aca30d4b459086d18e71adb0d0a81d19716a198eda49d6fd34ef3e1aec8fa26e3a5
   languageName: node
   linkType: hard
 
-"sherpa-onnx-win-ia32@npm:^1.13.8":
-  version: 1.13.8
-  resolution: "sherpa-onnx-win-ia32@npm:1.13.8"
+"sherpa-onnx-win-arm64@npm:2.0.1":
+  version: 2.0.1
+  resolution: "sherpa-onnx-win-arm64@npm:2.0.1"
+  conditions: os=win32 & cpu=arm64
+  languageName: node
+  linkType: hard
+
+"sherpa-onnx-win-ia32@npm:2.0.1":
+  version: 2.0.1
+  resolution: "sherpa-onnx-win-ia32@npm:2.0.1"
   conditions: os=win32 & cpu=ia32
   languageName: node
   linkType: hard
 
-"sherpa-onnx-win-x64@npm:^1.13.8":
-  version: 1.13.8
-  resolution: "sherpa-onnx-win-x64@npm:1.13.8"
+"sherpa-onnx-win-x64@npm:2.0.1":
+  version: 2.0.1
+  resolution: "sherpa-onnx-win-x64@npm:2.0.1"
   conditions: os=win32 & cpu=x64
   languageName: node
   linkType: hard
