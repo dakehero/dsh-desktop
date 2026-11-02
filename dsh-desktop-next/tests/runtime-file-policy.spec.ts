@@ -159,3 +159,19 @@ it('selects native packages by published OS and CPU constraints, including unive
   expect(nextRuntimePackageExclusion({ cpu: ['!x64'] }, windows)).toBeDefined()
   expect(nextRuntimePackageExclusion({ os: ['any', '!win32'] }, windows)).toBeDefined()
 })
+
+
+it('keeps native ARM64 ConPTY helpers and removes x64 prebuilds from Windows ARM64', () => {
+  const arm64 = { platform: 'win32' as const, archs: ['arm64'] }
+  expect(nextRuntimeFileExclusion('@earendil-works/pi-tui/native/linux/prebuilds/linux-arm64/linux-platform-x11.node', arm64)).toBeDefined()
+  expect(nextRuntimeFileExclusion('@earendil-works/pi-tui/native/win32/prebuilds/win32-x64/win32-platform.node', arm64)).toBeDefined()
+  expect(nextRuntimeFileExclusion('@earendil-works/pi-tui/native/win32/prebuilds/win32-arm64/win32-platform.node', arm64)).toBeUndefined()
+  expect(nextRuntimeFileExclusion('@earendil-works/pi-tui/native/darwin/prebuilds/darwin-arm64/darwin-platform.node', arm64)).toBeDefined()
+  expect(nextRuntimeFileExclusion('@earendil-works/pi-tui/native/darwin/prebuilds/darwin-arm64/darwin-platform.node', { platform: 'darwin', archs: ['arm64', 'x64'] })).toBeUndefined()
+  expect(nextRuntimeFileExclusion('node-pty/prebuilds/win32-arm64/conpty.node', arm64)).toBeUndefined()
+  expect(nextRuntimeFileExclusion('node-pty/prebuilds/win32-x64/conpty.node', arm64)).toBeDefined()
+  expect(nextRuntimeFileExclusion('node-pty/third_party/conpty/1.25.260303002/win10-arm64/conpty.dll', arm64)).toBeUndefined()
+  expect(nextRuntimeFileExclusion('node-pty/third_party/conpty/1.25.260303002/win10-x64/conpty.dll', arm64)).toBeDefined()
+  expect(nextRuntimePackageExclusion({ os: ['win32'], cpu: ['arm64'] }, arm64)).toBeUndefined()
+  expect(nextRuntimePackageExclusion({ os: ['win32'], cpu: ['x64'] }, arm64)).toBeDefined()
+})

@@ -41,7 +41,7 @@ export function nextMacVerification(signed: boolean, distDir: string, env: NodeJ
     run: (command, args) => {
       if (inPlace !== undefined && command === 'hdiutil') return
       if (!signed && ['codesign', 'spctl', 'xcrun'].includes(command)) return
-      if (smokeSlices !== undefined && command === 'lipo' && args[1] === '-verify_arch' && args[0]?.includes('/Contents/MacOS/') && !smokeSlices.includes(args[2] as MacUniversalArch)) return
+      if (smokeSlices !== undefined && command === 'lipo' && args[1] === '-verify_arch' && args[0]?.replaceAll('\\', '/').includes('/Contents/MacOS/') && !smokeSlices.includes(args[2] as MacUniversalArch)) return
       run(command, args)
       if (signed && command === 'codesign' && args.includes('--verify')) verifyNextMacEntitlements(args.at(-1)!)
     } }
