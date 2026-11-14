@@ -70,6 +70,12 @@ export function nextRuntimeFileExclusion(path: string, target: NextPackagingTarg
   const name = packageParts.slice(0, nameParts).join('/')
   const entry = packageParts.slice(nameParts).join('/')
   const targets = target.archs.map(arch => `${target.platform}-${arch}`)
+  if (name === '@earendil-works/pi-tui') {
+    const nativePlatform = /^native\/(darwin|linux|win32)(?:\/|$)/u.exec(entry)?.[1]
+    const nativeArch = /\/prebuilds\/(?:darwin|linux|win32)-(x64|arm64)(?:\/|$)/u.exec(entry)?.[1]
+    if ((nativePlatform !== undefined && nativePlatform !== target.platform)
+      || (nativeArch !== undefined && !target.archs.includes(nativeArch))) return 'terminal helper for another platform or CPU'
+  }
   // pnpm vendors these optional prebuilds inside dist/node_modules, outside the manifest closure.
   const reflink = /^@reflink\/reflink-(darwin|linux|win32)-(x64|arm64|ia32)(?:-(?:gnu|musl|msvc))?$/u.exec(name)
   if (reflink !== null && !targets.includes(`${reflink[1]}-${reflink[2]}`)) return 'Reflink other platform or architecture'

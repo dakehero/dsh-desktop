@@ -50,7 +50,9 @@ async function assembled(extra: (app: string) => void = () => {}, seal = true): 
 
 it('describes the architectures each release target carries', () => {
   expect(nextPackagingTarget('darwin')).toEqual({ platform: 'darwin', archs: ['arm64', 'x64'] })
-  expect(nextPackagingTarget('win32')).toEqual({ platform: 'win32', archs: ['x64'] })
+  expect(nextPackagingTarget('win32', 'x64')).toEqual({ platform: 'win32', archs: ['x64'] })
+  expect(nextPackagingTarget('win32', 'arm64')).toEqual({ platform: 'win32', archs: ['arm64'] })
+  expect(() => nextPackagingTarget('win32', 'ia32')).toThrow('Unsupported Windows')
   expect(nextPackagingTarget('linux', 'arm64')).toEqual({ platform: 'linux', archs: ['arm64'] })
 })
 

@@ -13,7 +13,7 @@ export interface NextUpdateOptions {
   platform: string
   packaged: boolean
   userData: string
-  /** CPU of this Mac. The version check and the download name it, so the service answers with that CPU's installer. */
+  /** Native installer CPU: Mac hardware (including Rosetta) or the Windows process architecture. */
   arch?: UpdateArch
   /** Fetch adapter for the version check. */
   request: UpdateRequest
@@ -92,7 +92,7 @@ export class NextUpdates {
   }
   /** Request options naming this Mac's CPU; unchanged where the platform names none. */
   private withArch(init: RequestInit): RequestInit {
-    return this.options.arch === undefined ? init : withUpdateArch(init, this.options.arch)
+    return this.options.platform !== 'darwin' || this.options.arch === undefined ? init : withUpdateArch(init, this.options.arch)
   }
   private async query(signal: AbortSignal): Promise<UpdateCheckResult | null> {
     let installationId
@@ -101,7 +101,7 @@ export class NextUpdates {
       try { installationId = await getOrCreateDesktopInstallationId(this.options.userData) } catch (error) { this.options.log(error) }
     }
     return checkForDesktopUpdate({ currentVersion: this.options.version, channel: 'next', installationId,
-      request: (url, init) => this.options.request(url, this.withArch(init)), signal: AbortSignal.any([signal, AbortSignal.timeout(20_000)]) })
+      arch: this.options.arch ?? (process.arch === 'arm64' ? 'arm64' : 'x64'), request: (url, init) => this.options.request(url, this.withArch(init)), signal: AbortSignal.any([signal, AbortSignal.timeout(20_000)]) })
   }
   check(background = false): Promise<void> {
     if (this.state.phase === 'ready' || this.state.phase === 'installing') return Promise.resolve()
@@ -138,13 +138,14 @@ export class NextUpdates {
         if (result.status !== 'update-available') { this.set({ phase: 'current', version: result.latestVersion }); return }
         if (result.latestVersion !== this.notifiedVersion) this.recordNotifiedVersion(result.latestVersion)
         const platform = this.options.platform as 'darwin' | 'win32'
+        const arch = this.options.arch ?? (process.arch === 'arm64' ? 'arm64' : 'x64')
         const cache = join(this.options.userData, 'next-updates'); privateDirectory(cache)
         if (this.directory) await rm(this.directory, { recursive: true, force: true })
         const directory = this.directory = await mkdtemp(join(cache, 'download-'))
         this.set({ phase: 'downloading', version: result.latestVersion, received: 0, total: undefined })
         let lastProgress = 0
-        const path = await downloadDesktopUpdate({ platform, version: result.latestVersion, channel: 'next',
-          destinationPath: join(directory, desktopUpdateFilename(platform, result.latestVersion, 'next')),
+        const path = await downloadDesktopUpdate({ platform, arch, version: result.latestVersion, channel: 'next',
+          destinationPath: join(directory, desktopUpdateFilename(platform, result.latestVersion, 'next', arch)),
           request: (url, init) => this.options.artifactRequest(url, this.withArch(init)), expectedSha256: result.installerSha256?.[platform],
           signal: AbortSignal.any([signal, AbortSignal.timeout(60 * 60_000)]), onProgress: (received, total) => {
             if (Date.now() - lastProgress < 250 && received !== total) return
